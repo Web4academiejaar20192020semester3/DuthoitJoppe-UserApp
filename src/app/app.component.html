@@ -1,0 +1,46 @@
+<h1>{{ title }}</h1>
+<h2>List of users</h2>
+<table>
+  <thead>
+  <th>Voornaam</th>
+  <th>Naam</th>
+  <th>email</th>
+  <th>geslacht</th>
+  <th>leeftijd</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users">
+    <td (click)="onSelect(user)">{{user.voornaam}}</td>
+    <td (click)="onSelect(user)">{{user.naam}}</td>
+    <td (click)="onSelect(user)">{{user.email}}</td>
+    <td (click)="onSelect(user)">{{user.geslacht}}</td>
+    <td (click)="onSelect(user)">{{user.leeftijd}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<div *ngIf="selectedUser">
+  <h2>{{selectedUser.voornaam}} {{selectedUser.naam}} details</h2>
+  <table>
+    <thead>
+    <th>Voornaam</th>
+    <th>Naam</th>
+    <th>geslacht</th>
+    <th>leeftijd</th>
+    </thead>
+    <tbody>
+    <tr>
+      <td><input [(ngModel)]="selectedUser.voornaam" placeholder="voornaam"/></td>
+      <td><input [(ngModel)]="selectedUser.naam" placeholder="naam"/></td>
+      <td>
+        <select [(ngModel)]="selectedUser.geslacht" name="geslacht">
+          <option value="M">Male</option>
+          <option value="V">Female</option>
+        </select>
+      </td>
+      <td><input type="number" [(ngModel)]="selectedUser.leeftijd" placeholder="leeftijd"/></td>
+      <button (click)="updateUser(selectedUser)">Update user</button>
+    </tr>
+    </tbody>
+  </table>
+</div>
